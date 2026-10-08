@@ -1,0 +1,1491 @@
+<!DOCTYPE html><html lang="id" style="--pg: 0.000;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+<title>Portofolio Ibnu | Administrasi Teknik &amp; Pemetaan Bendungan</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Outfit:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Orbitron:wght@600;800&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400;500&amp;family=Fira+Code:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05070b;--fg:#eef3fa;--mu:#9aa7b8;--ac:#2997ff;--ac2:#7ee8ff;--card:rgba(14,20,31,.72);--ln:rgba(255,255,255,.11);--d:'Space Grotesk','Inter',system-ui,sans-serif;--b:'Inter',system-ui,sans-serif;
+color-scheme:dark;box-sizing:border-box}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:radial-gradient(ellipse at 50% 0%,#0b2548,var(--bg) 60%) var(--bg);color:var(--fg);font:400 16px/1.6 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+body:after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(5,7,11,.8))}
+main,nav,footer,.hud{position:relative;z-index:2}
+a{color:inherit}
+.w{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+
+/* Navigation bar */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,7,11,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--ln)}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:68px}
+nav b{font:700 17px var(--d);display:flex;align-items:center;gap:.6rem}
+nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;font-size:14px;color:var(--mu)}
+nav ul a{text-decoration:none;transition:color .2s}nav ul a:hover{color:#fff}
+.nav-actions{display:flex;align-items:center;gap:.5rem}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1.3rem;border-radius:999px;font-weight:600;font-size:13.5px;text-decoration:none;border:1px solid var(--ln);background:rgba(255,255,255,.06);backdrop-filter:blur(10px);color:var(--fg);cursor:pointer;transition:all .2s ease;font-family:var(--d)}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25)}
+.btn.go{background:var(--ac);border-color:var(--ac);color:#001224}
+.btn.go:hover{box-shadow:0 10px 35px rgba(41,151,255,.45);background:#4aa8ff}
+.btn.csv-btn{background:rgba(126,232,255,.12);border-color:rgba(126,232,255,.35);color:var(--ac2)}
+.btn.edit-btn{background:rgba(255,184,77,.14);border-color:rgba(255,184,77,.4);color:#ffc069}
+.btn.edit-btn.active{background:#ff9c27;color:#1c0b00;border-color:#ff9c27;box-shadow:0 0 20px rgba(255,156,39,.5)}
+.btn.doc-btn{background:rgba(126,232,255,.16);border-color:var(--ac2);color:#fff}
+.btn.sfx-btn{background:rgba(126,232,255,.08);border-color:rgba(126,232,255,.28);color:var(--ac2)}
+.btn.sfx-btn.muted{background:rgba(255,255,255,.04);border-color:var(--ln);color:var(--mu);opacity:.8}
+.btn-sm{padding:.38rem .8rem;font-size:12.5px}
+
+/* Typography & Layout */
+.p{min-height:90vh;padding:14vh 0 6vh;display:flex;align-items:center}
+.p>.w{width:100%}
+h1{font:700 clamp(2.8rem,8.5vw,6.5rem)/.96 var(--d);letter-spacing:-.04em;margin:0;background:linear-gradient(180deg,#fff 30%,var(--ac2) 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font:700 clamp(2rem,4.5vw,3.2rem)/1.08 var(--d);letter-spacing:-.03em;margin:0 0 2.2rem}
+h3{font:600 1.2rem/1.25 var(--d);margin:0 0 .4rem}
+.lead{font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.45;color:var(--mu);max-width:38rem;margin:1.4rem 0 2rem}
+.chip{display:inline-flex;align-items:center;gap:.5rem;font-size:13.5px;color:var(--ac2);margin-bottom:1.4rem;font-family:var(--d)}
+.chip:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ac2);box-shadow:0 0 0 4px rgba(126,232,255,.18),0 0 16px var(--ac2)}
+.acts{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:22px;padding:1.6rem;backdrop-filter:blur(16px);transition:transform .22s ease-out,border-color .25s,box-shadow .25s}
+.card:hover{border-color:rgba(126,232,255,.35);box-shadow:0 25px 60px rgba(0,0,0,.45),0 0 40px rgba(41,151,255,.12)}
+.card p,.card li{color:var(--mu);margin:0}
+.g2,.g3{display:grid;gap:1.1rem}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.big{font:700 clamp(5rem,18vw,11.5rem)/.85 var(--d);letter-spacing:-.06em;background:linear-gradient(180deg,#fff,var(--ac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats{display:grid;grid-template-columns:auto 1fr;gap:2.8rem;align-items:center}
+.sm{display:grid;gap:.8rem}
+.sm .card{padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.sm b{font:600 1.3rem var(--d)}.sm span{color:var(--mu);font-size:13.5px;text-align:right}
+.tl{display:grid;gap:1rem}
+.job{display:grid;grid-template-columns:150px 1fr;gap:1.4rem}
+.job .d{font:600 13.5px var(--d);color:var(--ac2);padding-top:.2rem}
+.job .o{color:var(--ac);font-size:14.5px;margin:0 0 .6rem}
+.job ul{margin:0;padding-left:1.1rem}.job li{margin-bottom:.3rem;font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+.tags span{font-size:13px;padding:.25rem .75rem;border-radius:999px;border:1px solid var(--ln);background:rgba(255,255,255,.04);transition:.2s}
+.tags span:hover{border-color:var(--ac2);background:rgba(126,232,255,.1)}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:1rem;background:linear-gradient(135deg,rgba(41,151,255,.35),rgba(126,232,255,.12));border:1px solid rgba(126,232,255,.3);font:700 17px var(--d);color:var(--ac2)}
+
+/* Avatar Hero UI */
+.hero-avatar-wrap{perspective:1000px;display:inline-flex;align-items:center;gap:1.2rem;margin-bottom:1.4rem}
+.avatar-hud-frame{position:relative;cursor:pointer;border-radius:18px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.avatar-img-view{display:block;width:86px;height:86px;object-fit:cover;border-radius:18px;border:2px solid rgba(126,232,255,.4);box-shadow:0 0 20px rgba(41,151,255,.25);transition:.4s}
+.avatar-hud-frame:hover{transform:perspective(800px) rotateY(14deg) rotateX(-8deg) scale3d(1.05,1.05,1.05)}
+.avatar-hud-frame:hover .avatar-img-view{border-color:var(--ac2);box-shadow:0 0 30px rgba(126,232,255,.6)}
+.avatar-info-panel{display:flex;flex-direction:column;gap:.3rem}
+.avatar-badge-status{display:inline-flex;align-items:center;gap:.4rem;font-size:12px;color:var(--ac2);font-family:var(--d)}
+.avatar-badge-tag{font-size:13.5px;color:#fff;font-weight:600;font-family:var(--d)}
+.avatar-quick-change{background:transparent;border:1px solid rgba(126,232,255,.3);color:var(--mu);padding:.25rem .7rem;border-radius:999px;font-size:11.5px;font-family:var(--d);cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;width:fit-content;transition:.2s}
+.avatar-quick-change:hover{color:var(--ac2);border-color:var(--ac2);background:rgba(126,232,255,.1)}
+
+/* Dokumen & Galeri Cards */
+.doc-filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem;align-items:center}
+.doc-filter-btn{background:rgba(255,255,255,.04);border:1px solid var(--ln);color:var(--mu);padding:.4rem 1rem;border-radius:999px;font-size:13px;font-family:var(--d);font-weight:600;cursor:pointer;transition:.2s}
+.doc-filter-btn.active{background:rgba(126,232,255,.18);border-color:var(--ac2);color:var(--ac2);box-shadow:0 0 15px rgba(126,232,255,.2)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.3rem}
+.doc-card{background:var(--card);border:1px solid var(--ln);border-radius:20px;overflow:hidden;backdrop-filter:blur(16px);display:flex;flex-direction:column;transition:all .25s ease}
+.doc-card:hover{border-color:rgba(126,232,255,.45);box-shadow:0 20px 45px rgba(0,0,0,.6),0 0 35px rgba(41,151,255,.18);transform:translateY(-4px)}
+.doc-thumb{height:180px;width:100%;background:#091222;position:relative;overflow:hidden;cursor:pointer}
+.doc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.doc-card:hover .doc-thumb img{transform:scale(1.05)}
+.doc-badge-type{position:absolute;top:12px;left:12px;padding:.25rem .65rem;border-radius:6px;font-size:11px;font-weight:700;font-family:var(--d);letter-spacing:.03em;backdrop-filter:blur(8px);display:flex;align-items:center;gap:.35rem}
+.doc-badge-pdf{background:rgba(255,75,75,.85);color:#fff;border:1px solid #ff4b4b}
+.doc-badge-jpg{background:rgba(41,151,255,.85);color:#fff;border:1px solid #2997ff}
+.doc-body{padding:1.3rem;display:flex;flex-direction:column;flex:1}
+.doc-date{font-size:12px;color:var(--ac2);font-family:var(--d);margin-bottom:.35rem}
+.doc-title{font:600 1.15rem/1.3 var(--d);margin:0 0 .5rem;color:#fff}
+.doc-desc{font-size:13.5px;color:var(--mu);line-height:1.45;flex:1;margin-bottom:1rem}
+.doc-actions{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:.85rem}
+.doc-meta-size{font-size:12px;color:var(--mu);font-family:var(--d)}
+
+/* Modals */
+.modal-overlay{position:fixed;inset:0;background:rgba(3,6,12,.85);backdrop-filter:blur(14px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.modal-overlay.active{display:flex}
+.modal-box{background:#0a101b;border:1px solid rgba(126,232,255,.3);border-radius:24px;width:100%;max-width:880px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 30px 90px rgba(0,0,0,.85),0 0 50px rgba(41,151,255,.2);overflow:hidden}
+.modal-header{padding:1.2rem 1.6rem;border-bottom:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center;background:rgba(14,22,36,.6)}
+.modal-header h3{margin:0;font-size:1.2rem;display:flex;align-items:center;gap:.6rem;color:#fff}
+.modal-body{padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:1.2rem}
+.modal-footer{padding:1.1rem 1.6rem;border-top:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center;background:rgba(14,22,36,.6)}
+
+/* Upload Form Zone */
+.dropzone{border:2px dashed rgba(126,232,255,.35);border-radius:18px;padding:2.2rem 1.5rem;text-align:center;background:rgba(126,232,255,.02);cursor:pointer;transition:.25s}
+.dropzone:hover,.dropzone.dragover{border-color:var(--ac2);background:rgba(126,232,255,.08)}
+.form-input,.form-textarea,.form-select{width:100%;background:#050911;border:1px solid var(--ln);border-radius:12px;color:#dbe6f5;font-size:13.5px;padding:.65rem .9rem;font-family:inherit}
+.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--ac2);box-shadow:0 0 12px rgba(126,232,255,.25)}
+
+/* CSV & Avatar Presets */
+.csv-tabs{display:flex;gap:.5rem;border-bottom:1px solid var(--ln);padding-bottom:.6rem}
+.csv-tab-btn{background:transparent;border:none;color:var(--mu);padding:.4rem .9rem;font-family:var(--d);font-weight:600;font-size:13.5px;cursor:pointer;border-radius:8px}
+.csv-tab-btn.active{background:rgba(126,232,255,.15);color:var(--ac2)}
+.csv-textarea{width:100%;height:180px;background:#050911;border:1px solid var(--ln);border-radius:12px;color:#a8c0dd;font-family:monospace;font-size:12.5px;padding:.8rem;resize:vertical}
+.csv-table-preview{width:100%;border-collapse:collapse;font-size:12.5px;color:#d5e2f2;background:rgba(255,255,255,.02);border:1px solid var(--ln);border-radius:10px}
+.csv-table-preview th{background:rgba(41,151,255,.15);color:var(--ac2);padding:.5rem .7rem;text-align:left;font-family:var(--d)}
+.csv-table-preview td{padding:.5rem .7rem;border-top:1px solid rgba(255,255,255,.06)}
+.avatar-preset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.8rem}
+.avatar-preset-card{background:rgba(255,255,255,.03);border:1px solid var(--ln);border-radius:14px;padding:.8rem;text-align:center;cursor:pointer;transition:.2s}
+.avatar-preset-card:hover{border-color:var(--ac2);background:rgba(126,232,255,.08)}
+.avatar-preset-card.active{border-color:var(--ac2);background:rgba(41,151,255,.2)}
+.avatar-preset-img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin:0 auto .5rem;display:block}
+
+/* Edit Mode Indicator */
+.edit-mode-active [contenteditable="true"]{outline:1px dashed rgba(255,184,77,.6);border-radius:4px;padding:2px 4px;background:rgba(255,184,77,.06)}
+.edit-mode-active [contenteditable="true"]:focus{outline:2px solid #ff9c27;background:rgba(255,184,77,.18)}
+.badge-edit{display:none;font-size:11px;padding:.2rem .6rem;border-radius:999px;background:rgba(255,156,39,.2);border:1px solid #ff9c27;color:#ffb84d;font-family:var(--d)}
+.edit-mode-active .badge-edit{display:inline-block}
+
+/* HUD & Toast */
+.hud{position:fixed;left:1.5rem;bottom:1.2rem;font:500 12px var(--d);color:var(--mu);display:flex;align-items:center;gap:.8rem;pointer-events:none;z-index:90}
+.hud i{display:block;width:80px;height:2px;background:var(--ln);position:relative;border-radius:2px}
+.hud i:after{content:"";position:absolute;inset:0;background:var(--ac2);transform-origin:left;transform:scaleX(var(--pg,0))}
+#toast{position:fixed;bottom:2rem;right:2rem;background:#0d1829;border:1px solid var(--ac2);color:#fff;padding:.8rem 1.3rem;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.6);z-index:9999;font-size:13.5px;font-family:var(--d);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;display:flex;align-items:center;gap:.5rem}
+#toast.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+@media(max-width:860px){
+  nav ul{display:none}
+  .g2,.g3,.stats{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:.2rem}
+  .p{padding:13vh 0 5vh}
+}
+</style>
+</head>
+<body>
+<canvas aria-hidden="true" id="gl" width="1408" height="7841"></canvas><div aria-hidden="true" class="bg-style-radial" id="bg-pattern-layer"></div>
+<!-- Top Navigation -->
+<nav>
+<div class="w">
+<b>
+<span class="">Portofolio Ibnu</span>
+<span class="badge-edit">Mode Edit Aktif</span>
+</b>
+<ul>
+<li class=""><a href="#ringkasan" class="">Ringkasan</a></li>
+<li class=""><a href="#kompetensi" class="">Kompetensi</a></li>
+<li class=""><a href="#pengalaman" class="">Pengalaman</a></li>
+<li class=""><a href="#dokumen" class="">Dokumen &amp; Galeri</a></li>
+<li class=""><a href="#keahlian" class="">Keahlian</a></li>
+</ul>
+<div class="nav-actions">
+<!-- SFX Audio Toggle Button -->
+<button class="btn sfx-btn btn-sm" id="sfxToggleBtn" title="Toggle Efek Suara Sci-Fi">
+<svg fill="none" height="13" id="sfxIconOn" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<svg fill="none" height="13" id="sfxIconOff" stroke="currentColor" stroke-width="2" style="display:none" viewBox="0 0 24 24" width="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" x2="17" y1="9" y2="15"></line><line x1="17" x2="23" y1="9" y2="15"></line></svg>
+<span id="sfxLabel" class="">SFX: ON</span>
+</button>
+<!-- Upload PDF/JPEG Button in Nav -->
+<button class="btn doc-btn btn-sm" onclick="openUploadModal()" title="Unggah Berkas PDF atau JPEG">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+<span class="">Upload Berkas</span>
+</button>
+<!-- Avatar Modal Button -->
+<button class="btn btn-sm" onclick="openAvatarModal()" title="Kustomisasi Avatar Profil">
+<svg fill="none" height="13" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="13"><circle cx="12" cy="8" r="4"></circle><path d="M20 21a8 8 0 1 0-16 0"></path></svg>
+<span class="">Avatar</span>
+</button>
+<!-- Edit Mode Toggle Button -->
+<button class="btn edit-btn btn-sm" id="toggleEditBtn" title="Aktifkan Mode Pengeditan Teks">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+<span id="editText" class="">Mode Edit</span>
+</button>
+<!-- CSV Mode Button -->
+<button class="btn csv-btn btn-sm" onclick="openCsvModal('experience')" title="Kelola Data Tabel via CSV">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+<span class="">CSV</span>
+</button>
+<button class="btn csv-btn btn-sm" id="navThemeBtn" onclick="openThemeModal()" title="Kustomisasi Tema, Font, Warna &amp; Efek Visual"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg><span class="">Studio Tema</span></button><a class="btn go btn-sm" href="#kontak">Hubungi</a>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="p" id="top">
+<div class="w">
+<div class="chip" data-editable="hero_chip">Tersedia untuk penugasan 2026</div>
+<div class="hero-avatar-wrap">
+<div class="avatar-hud-frame tilt" onclick="openAvatarModal()" title="Klik untuk mengganti avatar / foto profil">
+<img alt="Avatar Muhammad Ibnu Mubarok" class="avatar-img-view" id="currentAvatarImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtQmEM_2qGrVh1Rtsl9YM4xUIFKanxuBKa28gAyahXcr9qSBLAG_P68Bj04TRRsCyWSZd701IUIo5C91L27vzg4QxP1N0DhtiPb30IAaGR1aqSA5EPgUcLLoVt0cimdmgeUSVd8fA9d39AwH0LRM7cNpxZMinXR_S22Z2J6UtADOUlDyJ90hohdmybr_VXx7hXx8rzuvRfJ_ZKZBW1m2UWOFeZQnP6zSVrW6pqUpE">
+</div>
+<div class="avatar-info-panel">
+<span class="avatar-badge-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--ac2);box-shadow:0 0 8px var(--ac2)"></span> Foto Profil &amp; Identitas Drone</span>
+<span class="avatar-badge-tag" id="currentAvatarLabel">Quadcopter Survey Drone</span>
+<button class="avatar-quick-change" onclick="openAvatarModal()"><svg fill="none" height="12" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="12"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Ganti Avatar</button>
+</div>
+</div>
+<h1 data-editable="hero_name" class="">Portofolio<br>Ibnu</h1>
+<p class="lead" data-editable="hero_bio">Administrasi teknik, data instrumentasi bendungan, dan pemetaan udara. Scroll untuk terbang menyusuri lembah bendungan.</p>
+<div class="acts">
+<a class="btn go" href="https://wa.me/6282124098158">Hubungi via WhatsApp</a>
+<a class="btn" href="#dokumen">Lihat Arsip Dokumen &amp; Foto</a>
+<button class="btn doc-btn" onclick="openUploadModal()">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+Unggah PDF / JPEG
+</button>
+</div>
+</div>
+</section>
+<!-- Ringkasan Section -->
+<section class="p" id="ringkasan">
+<div class="w stats">
+<div>
+<div class="big" data-editable="summary_years">12+</div>
+<p class="lead" data-editable="summary_tagline" style="margin:1rem 0 0">tahun mengelola dokumen, data, dan laporan proyek infrastruktur air.</p>
+</div>
+<div class="sm">
+<div class="card tilt">
+<b data-editable="stat_1_val">BBWSCC</b>
+<span data-editable="stat_1_sub" class="">Kementerian Pekerjaan Umum</span>
+</div>
+<div class="card tilt">
+<b data-editable="stat_2_val">Drone</b>
+<span data-editable="stat_2_sub" class="">Photogrammetry &amp; pemetaan udara</span>
+</div>
+<div class="card tilt">
+<b data-editable="stat_3_val">Geoteknik</b>
+<span data-editable="stat_3_sub" class="">Instrumentasi bendungan</span>
+</div>
+<div class="card tilt">
+<p data-editable="stat_desc" class="">Terampil dalam pengarsipan sistematis, opname tagihan, pengolahan data instrumentasi, dan verifikasi laporan lapangan.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Kompetensi Section -->
+<section class="p" id="kompetensi">
+<div class="w">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem">
+<h2 data-editable="comp_heading" style="margin:0" class="">Empat kompetensi utama.</h2>
+<button class="btn csv-btn btn-sm" onclick="openCsvModal('competencies')">Edit Kompetensi (CSV)</button>
+</div>
+<div class="g2" id="competenciesContainer"><div class="card tilt"><div class="ico" onblur="updateCompField(0,'code',this.innerText)">A</div><h3 onblur="updateCompField(0,'title',this.innerText)" class="">Administrasi teknik &amp; proyek</h3><p onblur="updateCompField(0,'description',this.innerText)" class="">Dokumen konstruksi, opname tagihan, pengarsipan terstruktur, laporan progres mingguan dan bulanan.</p></div><div class="card tilt"><div class="ico" onblur="updateCompField(1,'code',this.innerText)">D</div><h3 onblur="updateCompField(1,'title',this.innerText)" class="">Data &amp; pelaporan</h3><p onblur="updateCompField(1,'description',this.innerText)" class="">Pengolahan data piezometer, inclinometer, dan settlement gauge untuk evaluasi teknis.</p></div><div class="card tilt"><div class="ico" onblur="updateCompField(2,'code',this.innerText)">P</div><h3 onblur="updateCompField(2,'title',this.innerText)" class="">Pemetaan &amp; dokumentasi visual</h3><p onblur="updateCompField(2,'description',this.innerText)" class="">Pemetaan udara dengan drone memakai Agisoft Metashape dan Global Mapper.</p></div><div class="card tilt"><div class="ico" onblur="updateCompField(3,'code',this.innerText)">L</div><h3 onblur="updateCompField(3,'title',this.innerText)" class="">Lapangan &amp; pemeliharaan</h3><p onblur="updateCompField(3,'description',this.innerText)" class="">Monitoring infrastruktur, inspeksi visual, pengelasan, dan koordinasi lintas tim.</p></div></div>
+</div>
+</section>
+<!-- Pengalaman Section -->
+<section class="p" id="pengalaman">
+<div class="w">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem">
+<h2 data-editable="exp_heading" style="margin:0" class="">Pengalaman sejak 2013.</h2>
+<button class="btn csv-btn btn-sm" onclick="openCsvModal('experience')">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+CSV Pengalaman
+</button>
+</div>
+<div class="tl" id="experienceContainer"><div class="card tilt job"><div class="d" onblur="updateExpField(0,'period',this.innerText)">2022 – Sekarang</div><div><h3 onblur="updateExpField(0,'role',this.innerText)" class="">Koordinator Pemeliharaan &amp; Pilot Drone UPB</h3><p class="o" onblur="updateExpField(0,'company',this.innerText)">BBWSCC — Kementerian Pekerjaan Umum</p><ul><li onblur="updateTaskText(0,0,this.innerText)" class="">Mengelola administrasi dan rekapitulasi data instrumentasi bendungan untuk laporan evaluasi berkala.</li><li onblur="updateTaskText(0,1,this.innerText)" class="">Menyusun dan mengarsipkan laporan pemetaan serta inspeksi visual untuk keputusan tim engineer.</li><li onblur="updateTaskText(0,2,this.innerText)" class="">Mengoordinasikan pemeliharaan rutin dan darurat antara tim teknis, kontraktor, dan instansi terkait.</li><li onblur="updateTaskText(0,3,this.innerText)" class="">Mengoperasikan drone photogrammetry untuk pemetaan udara dan dokumentasi kondisi bendungan.</li></ul></div></div><div class="card tilt job"><div class="d" onblur="updateExpField(1,'period',this.innerText)">2017 – 2022</div><div><h3 onblur="updateExpField(1,'role',this.innerText)" class="">Admin Teknik Proyek Pembangunan Bendungan Ciawi</h3><p class="o" onblur="updateExpField(1,'company',this.innerText)">PT. SAC Nusantara</p><ul><li onblur="updateTaskText(1,0,this.innerText)" class="">Mengelola dan mengarsipkan dokumen teknik serta data progres proyek bendungan skala nasional.</li><li onblur="updateTaskText(1,1,this.innerText)" class="">Opname tagihan dan verifikasi volume pekerjaan sebagai acuan pembayaran kontraktor.</li><li onblur="updateTaskText(1,2,this.innerText)" class="">Menyusun arsip foto teknis dan mendukung Laporan Progres Mingguan dan Bulanan.</li></ul></div></div><div class="card tilt job"><div class="d" onblur="updateExpField(2,'period',this.innerText)">2016 – 2017</div><div><h3 onblur="updateExpField(2,'role',this.innerText)" class="">Marketing Communication &amp; Administrasi Visual</h3><p class="o" onblur="updateExpField(2,'company',this.innerText)">Hotel The Forest, Bogor</p><ul><li onblur="updateTaskText(2,0,this.innerText)" class="">Mengelola administrasi promosi, arsip media visual, dan hubungan dengan klien korporat serta travel agent.</li></ul></div></div><div class="card tilt job"><div class="d" onblur="updateExpField(3,'period',this.innerText)">2013 – 2016</div><div><h3 onblur="updateExpField(3,'role',this.innerText)" class="">Operator Wahana, Fotografer &amp; Pengelola Arsip Visual</h3><p class="o" onblur="updateExpField(3,'company',this.innerText)">Wahana Rekreasi Bogor · PT. Safari Wonder · Nunema Photography</p><ul><li onblur="updateTaskText(3,0,this.innerText)" class="">Mencatat kelayakan peralatan dan mengawasi SOP keselamatan kerja (2014–2016).</li><li onblur="updateTaskText(3,1,this.innerText)" class="">Mengelola arsip foto, pengeditan digital, dan penyerahan hasil tepat jadwal (2013–2014).</li></ul></div></div></div>
+</div>
+</section>
+<!-- BARU: DOKUMEN & GALERI (PDF & JPEG FULL SYSTEM) -->
+<section class="p" id="dokumen">
+<div class="w">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.2rem;margin-bottom:2rem">
+<div>
+<div class="chip" style="margin-bottom:.6rem">Pustaka Digital &amp; Portofolio Visual</div>
+<h2 style="margin:0" class="">Dokumen &amp; Galeri Lapangan.</h2>
+<p class="lead" style="margin:.6rem 0 0;font-size:1.15rem">Kumpulan dokumen sertifikasi resmi (PDF), laporan teknis, dan dokumentasi visual hasil penerbangan drone geoteknik (JPEG).</p>
+</div>
+<div style="display:flex;gap:.6rem;flex-wrap:wrap">
+<button class="btn doc-btn" onclick="openUploadModal()">
+<svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+Tambah PDF / JPEG
+</button>
+</div>
+</div>
+<!-- Category Filters -->
+<div class="doc-filter-bar">
+<button class="doc-filter-btn active" onclick="filterDocs('all', this)">Semua Berkas (<span id="count-all" class="">5</span>)</button>
+<button class="doc-filter-btn" onclick="filterDocs('pdf', this)">PDF Sertifikat &amp; Laporan (<span id="count-pdf" class="">3</span>)</button>
+<button class="doc-filter-btn" onclick="filterDocs('jpg', this)">Foto Drone &amp; Lapangan (<span id="count-jpg" class="">2</span>)</button>
+</div>
+<!-- Documents & Photos Grid -->
+<div class="doc-grid" id="documentsGrid"><div class="doc-card tilt" data-doc-id="doc_1"><div class="doc-thumb" onclick="openDocViewer('doc_1')"><img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Lisensi Pilot Drone APDI &amp; Registrasi Kemenhub" loading="lazy"><span class="doc-badge-type doc-badge-pdf">📄 DOKUMEN PDF</span></div><div class="doc-body"><div class="doc-date">Sertifikasi &amp; Lisensi • 2023 – 2026</div><h3 class="doc-title">Lisensi Pilot Drone APDI &amp; Registrasi Kemenhub</h3><p class="doc-desc">Sertifikasi resmi pilot drone komersial APDI untuk operasi pemetaan udara fotogrametri dan inspeksi lereng bendungan.</p><div class="doc-actions"><span class="doc-meta-size">1.8 MB</span><div style="display:flex;gap:.4rem"><button class="btn btn-sm" onclick="openDocViewer('doc_1')">Lihat</button><button class="btn btn-sm" onclick="deleteDocument('doc_1')" style="color:#ff7878" title="Hapus Berkas">✕</button></div></div></div></div><div class="doc-card tilt" data-doc-id="doc_2"><div class="doc-thumb" onclick="openDocViewer('doc_2')"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Laporan Evaluasi Instrumentasi Piezometer &amp; Rembesan" loading="lazy"><span class="doc-badge-type doc-badge-pdf">📄 DOKUMEN PDF</span></div><div class="doc-body"><div class="doc-date">Laporan Geoteknik • Semester II 2024</div><h3 class="doc-title">Laporan Evaluasi Instrumentasi Piezometer &amp; Rembesan</h3><p class="doc-desc">Rekapitulasi data geoteknik vibrating wire piezometer, rembesan vena weir, dan verifikasi batas aman tubuh bendungan BBWSCC.</p><div class="doc-actions"><span class="doc-meta-size">4.5 MB</span><div style="display:flex;gap:.4rem"><button class="btn btn-sm" onclick="openDocViewer('doc_2')">Lihat</button><button class="btn btn-sm" onclick="deleteDocument('doc_2')" style="color:#ff7878" title="Hapus Berkas">✕</button></div></div></div></div><div class="doc-card tilt" data-doc-id="doc_3"><div class="doc-thumb" onclick="openDocViewer('doc_3')"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Orthophoto 3D Topografi Spillway Bendungan Ciawi" loading="lazy"><span class="doc-badge-type doc-badge-jpg">📷 FOTO HD (JPEG)</span></div><div class="doc-body"><div class="doc-date">Pemetaan Udara &amp; Drone • November 2024</div><h3 class="doc-title">Orthophoto 3D Topografi Spillway Bendungan Ciawi</h3><p class="doc-desc">Hasil mosaik fotogrametri 650 foto udara menggunakan Agisoft Metashape dengan Ground Sampling Distance (GSD) 2.1 cm/px.</p><div class="doc-actions"><span class="doc-meta-size">12.4 MB (HD)</span><div style="display:flex;gap:.4rem"><button class="btn btn-sm" onclick="openDocViewer('doc_3')">Lihat</button><button class="btn btn-sm" onclick="deleteDocument('doc_3')" style="color:#ff7878" title="Hapus Berkas">✕</button></div></div></div></div><div class="doc-card tilt" data-doc-id="doc_4"><div class="doc-thumb" onclick="openDocViewer('doc_4')"><img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Inspeksi Visual RTU Sensor Telemetri &amp; Inclinometer" loading="lazy"><span class="doc-badge-type doc-badge-jpg">📷 FOTO HD (JPEG)</span></div><div class="doc-body"><div class="doc-date">Dokumentasi Lapangan • Januari 2025</div><h3 class="doc-title">Inspeksi Visual RTU Sensor Telemetri &amp; Inclinometer</h3><p class="doc-desc">Pemeriksaan berkala panel telemetri surya otomatis pada lereng kanan bendungan untuk transmisi data elevasi muka air.</p><div class="doc-actions"><span class="doc-meta-size">6.2 MB (HD)</span><div style="display:flex;gap:.4rem"><button class="btn btn-sm" onclick="openDocViewer('doc_4')">Lihat</button><button class="btn btn-sm" onclick="deleteDocument('doc_4')" style="color:#ff7878" title="Hapus Berkas">✕</button></div></div></div></div><div class="doc-card tilt" data-doc-id="doc_5"><div class="doc-thumb" onclick="openDocViewer('doc_5')"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Sertifikat Keselamatan Konstruksi &amp; K3 Lapangan PU" loading="lazy"><span class="doc-badge-type doc-badge-pdf">📄 DOKUMEN PDF</span></div><div class="doc-body"><div class="doc-date">Sertifikasi &amp; Lisensi • 2022</div><h3 class="doc-title">Sertifikat Keselamatan Konstruksi &amp; K3 Lapangan PU</h3><p class="doc-desc">Kualifikasi standar keselamatan kerja konstruksi berat di lingkungan bendungan dan area lereng terjal.</p><div class="doc-actions"><span class="doc-meta-size">1.2 MB</span><div style="display:flex;gap:.4rem"><button class="btn btn-sm" onclick="openDocViewer('doc_5')">Lihat</button><button class="btn btn-sm" onclick="deleteDocument('doc_5')" style="color:#ff7878" title="Hapus Berkas">✕</button></div></div></div></div></div>
+</div>
+</section>
+<!-- Keahlian & Info Section -->
+<section class="p" id="keahlian">
+<div class="w">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem">
+<h2 data-editable="skills_heading" style="margin:0" class="">Keahlian &amp; perangkat.</h2>
+<button class="btn csv-btn btn-sm" onclick="openCsvModal('skills')">Edit Keahlian (CSV)</button>
+</div>
+<div class="g3" id="skillsContainer"><div class="card tilt"><h3 onblur="updateSkillField(0,'category',this.innerText)" class="">Pemetaan &amp; dokumentasi</h3><div class="tags"><span onblur="updateSkillTag(0,0,this.innerText)" class="">Agisoft Metashape</span><span onblur="updateSkillTag(0,1,this.innerText)" class="">Global Mapper</span><span onblur="updateSkillTag(0,2,this.innerText)" class="">Drone Pilot</span><span onblur="updateSkillTag(0,3,this.innerText)" class="">Photoshop</span></div></div><div class="card tilt"><h3 onblur="updateSkillField(1,'category',this.innerText)" class="">Administrasi &amp; data</h3><div class="tags"><span onblur="updateSkillTag(1,0,this.innerText)" class="">Excel (Advanced)</span><span onblur="updateSkillTag(1,1,this.innerText)" class="">Word</span><span onblur="updateSkillTag(1,2,this.innerText)" class="">PowerPoint</span><span onblur="updateSkillTag(1,3,this.innerText)" class="">Opname Tagihan</span><span onblur="updateSkillTag(1,4,this.innerText)" class="">As-Built Drawing</span><span onblur="updateSkillTag(1,5,this.innerText)" class="">Otomasi AI</span></div></div><div class="card tilt"><h3 onblur="updateSkillField(2,'category',this.innerText)" class="">Instrumentasi lapangan</h3><div class="tags"><span onblur="updateSkillTag(2,0,this.innerText)" class="">Piezometer</span><span onblur="updateSkillTag(2,1,this.innerText)" class="">Inclinometer</span><span onblur="updateSkillTag(2,2,this.innerText)" class="">Settlement Gauge</span><span onblur="updateSkillTag(2,3,this.innerText)" class="">Telemetri RTU</span><span onblur="updateSkillTag(2,4,this.innerText)" class="">Welding</span></div></div></div>
+<div class="g3" style="margin-top:1.1rem">
+<div class="card tilt">
+<h3 class="">Pendidikan</h3>
+<p data-editable="edu_text" class="">SMA PGRI Ciawi, Kab. Bogor. IPS, lulus 2013.</p>
+</div>
+<div class="card tilt">
+<h3 class="">Data pribadi</h3>
+<p data-editable="personal_text" class="">Bogor, 15 Juli 1995. Laki-laki, menikah, WNI.</p>
+</div>
+<div class="card tilt">
+<h3 class="">Kesiapan kerja</h3>
+<p data-editable="work_ready_text" class="">SIM A. Bersedia dinas lapangan, shift, dan lembur.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Kontak Section -->
+<section class="p" id="kontak">
+<div class="w" style="text-align:center">
+<h1 data-editable="contact_title" style="font-size:clamp(2.5rem,7vw,5.5rem)" class="">Mari bekerja sama.</h1>
+<p class="lead" data-editable="contact_desc" style="margin:1.4rem auto 2.2rem">Butuh tenaga administrasi teknik, pemetaan drone, atau pengolahan data instrumentasi bendungan? Terbuka untuk penugasan di seluruh Indonesia.</p>
+<div class="acts" style="justify-content:center">
+<a class="btn go" href="https://wa.me/6282124098158">WhatsApp 0821-2409-8158</a>
+<a class="btn" href="mailto:ibnu788750@gmail.com">ibnu788750@gmail.com</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="w" style="padding:2.2rem 1.5rem;text-align:center;border-top:1px solid var(--ln);font-size:13px;color:var(--mu);font-family:var(--d)">
+<span data-editable="footer_copy" class="">© 2026 Portofolio Ibnu</span> — Mode Interaktif, CSV Engine, Arsip PDF &amp; JPEG
+</div>
+</footer>
+<div aria-hidden="true" class="hud"><span id="pc" class="">Pemindaian 0%</span><i></i></div>
+<div id="toast" class="">Data berhasil diperbarui!</div><button aria-label="Buka Studio Tema" class="floating-theme-hud" onclick="openThemeModal()" title="Studio Tema &amp; Kustomisasi Desain"><svg fill="none" height="16" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="16"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span class="">Studio Tema</span></button>
+<div aria-modal="true" class="modal-overlay" id="themeModalOverlay" role="dialog">
+<div class="modal-box" style="max-width:820px">
+<div class="modal-header">
+<h3 class=""><svg fill="none" height="19" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="19"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg><span class="">Studio Tema &amp; Kustomisasi Visual</span></h3>
+<button class="btn btn-sm" onclick="closeThemeModal()" style="border-radius:50%;width:30px;height:30px;padding:0;justify-content:center">✕</button>
+</div>
+<div class="modal-body">
+<div class="csv-tabs">
+<button class="csv-tab-btn active" id="theme-tab-presets" onclick="switchThemeTab('presets')">1. Preset Tema</button>
+<button class="csv-tab-btn" id="theme-tab-typography" onclick="switchThemeTab('typography')">2. Tipografi &amp; Ukuran</button>
+<button class="csv-tab-btn" id="theme-tab-colors" onclick="switchThemeTab('colors')">3. Warna &amp; Tekstur</button>
+<button class="csv-tab-btn" id="theme-tab-effects" onclick="switchThemeTab('effects')">4. Glassmorphism &amp; 3D</button>
+</div>
+<div id="theme-panel-presets" style="display:flex;flex-direction:column;gap:1rem">
+<div style="font-size:13px;color:var(--mu)" class="">Pilih tema siap pakai dengan kombinasi warna sci-fi dan tata visual terverifikasi:</div>
+<div class="theme-palette-grid">
+<div class="theme-preset-card active" id="preset-default" onclick="applyPresetTheme('default')"><div style="font-weight:700;font-size:13.5px;color:#fff" class="">Deep Dam Cyberpunk</div><div style="font-size:11.5px;color:var(--mu)" class="">Biru Akua Bendungan Ciawi (Default)</div><div class="theme-swatches"><span style="background:#05070b"></span><span style="background:#0b2548"></span><span style="background:#2997ff"></span><span style="background:#7ee8ff"></span></div></div>
+<div class="theme-preset-card" id="preset-emerald" onclick="applyPresetTheme('emerald')"><div style="font-weight:700;font-size:13.5px;color:#fff" class="">Midnight Emerald</div><div style="font-size:11.5px;color:var(--mu)" class="">Geoteknik &amp; Lembah Hijau Hutan</div><div class="theme-swatches"><span style="background:#040d08"></span><span style="background:#0b301c"></span><span style="background:#10b981"></span><span style="background:#6ee7b7"></span></div></div>
+<div class="theme-preset-card" id="preset-amber" onclick="applyPresetTheme('amber')"><div style="font-weight:700;font-size:13.5px;color:#fff" class="">Solar Amber Surveyor</div><div style="font-size:11.5px;color:var(--mu)" class="">Sensasi Telemetri Panas Surya</div><div class="theme-swatches"><span style="background:#0c0804"></span><span style="background:#361d08"></span><span style="background:#f59e0b"></span><span style="background:#fde047"></span></div></div>
+<div class="theme-preset-card" id="preset-violet" onclick="applyPresetTheme('violet')"><div style="font-weight:700;font-size:13.5px;color:#fff" class="">Royal Violet Neon</div><div style="font-size:11.5px;color:var(--mu)" class="">Fotogrametri &amp; Sensor Spektrum</div><div class="theme-swatches"><span style="background:#08040f"></span><span style="background:#28114f"></span><span style="background:#a855f7"></span><span style="background:#e9d5ff"></span></div></div>
+<div class="theme-preset-card" id="preset-light" onclick="applyPresetTheme('light')"><div style="font-weight:700;font-size:13.5px;color:#fff" class="">Clean Technical Light</div><div style="font-size:11.5px;color:var(--mu)" class="">Mode Terang Dokumen Cetak PU</div><div class="theme-swatches"><span style="background:#f4f7fb"></span><span style="background:#e1e9f4"></span><span style="background:#0284c7"></span><span style="background:#0f172a"></span></div></div>
+</div>
+</div>
+<div id="theme-panel-typography" style="display:none;flex-direction:column;gap:1.2rem">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+<div><label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Font Judul (Heading):</label><select class="form-select" id="headingFontSelect" onchange="updateHeadingFont(this.value)"><option value="'Space Grotesk','Inter',system-ui,sans-serif">Space Grotesk (Default Futuristic)</option><option value="'Syne',sans-serif">Syne (Modern Display)</option><option value="'Outfit',sans-serif">Outfit (Clean Geometric)</option><option value="'Plus Jakarta Sans',sans-serif">Plus Jakarta Sans (Teknis Nasional)</option><option value="'Orbitron',sans-serif">Orbitron (Cyber Sci-Fi)</option><option value="'Inter',sans-serif">Inter (Minimalis)</option></select></div>
+<div><label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Font Teks Bacaan (Body):</label><select class="form-select" id="bodyFontSelect" onchange="updateBodyFont(this.value)"><option value="'Inter',system-ui,sans-serif">Inter (Default Terang)</option><option value="'Plus Jakarta Sans',sans-serif">Plus Jakarta Sans</option><option value="'DM Sans',sans-serif">DM Sans</option><option value="'Roboto',sans-serif">Roboto</option><option value="'Fira Code',monospace">Fira Code (Code Monospace)</option></select></div>
+</div>
+<div><div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><label style="font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600" class="">Skala Ukuran Teks Dokumen:</label><span id="fontScaleDisplay" style="font-size:13px;color:var(--mu);font-family:var(--d)" class="">16px</span></div><input id="fontScaleSlider" max="19" min="14" oninput="updateFontSize(this.value)" step="0.5" style="width:100%" type="range" value="16"></div>
+<div style="padding:.9rem 1.2rem;border:1px solid var(--ln);border-radius:12px;background:rgba(255,255,255,.02)"><div style="font-family:var(--d);font-size:1.15rem;margin-bottom:.2rem" class="">Contoh Tampilan: Administrasi Bendungan &amp; Fotogrametri</div><div style="font-family:var(--b);font-size:.9rem;color:var(--mu)" class="">Penyusunan laporan bulanan, instrumentasi geoteknik piezometer, dan pemetaan ortofoto resolusi tinggi.</div></div>
+</div>
+<div id="theme-panel-colors" style="display:none;flex-direction:column;gap:1.2rem">
+<div><label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.5rem" class="">Kustomisasi Palet Warna HEX:</label><div class="color-picker-row">
+<div class="color-picker-box"><span style="font-size:12px;color:var(--mu)" class="">Background</span><input id="cp-bg" oninput="updateThemeColor('--bg',this.value)" type="color" value="#05070b"></div>
+<div class="color-picker-box"><span style="font-size:12px;color:var(--mu)" class="">Teks Utama</span><input id="cp-fg" oninput="updateThemeColor('--fg',this.value)" type="color" value="#eef3fa"></div>
+<div class="color-picker-box"><span style="font-size:12px;color:var(--mu)" class="">Teks Sekunder</span><input id="cp-mu" oninput="updateThemeColor('--mu',this.value)" type="color" value="#9aa7b8"></div>
+<div class="color-picker-box"><span style="font-size:12px;color:var(--mu)" class="">Aksen Utama</span><input id="cp-ac" oninput="updateThemeColor('--ac',this.value)" type="color" value="#2997ff"></div>
+<div class="color-picker-box"><span style="font-size:12px;color:var(--mu)" class="">Aksen Terang</span><input id="cp-ac2" oninput="updateThemeColor('--ac2',this.value)" type="color" value="#7ee8ff"></div>
+</div></div>
+<div><label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.5rem" class="">Tekstur Latar Belakang:</label><div style="display:flex;gap:.6rem;flex-wrap:wrap"><button class="btn btn-sm" onclick="setBgStyle('radial')">Lembah Cahaya (Radial)</button><button class="btn btn-sm" onclick="setBgStyle('grid')">Grid Geodesi CAD</button><button class="btn btn-sm" onclick="setBgStyle('stars')">Bintang / Partikel</button><button class="btn btn-sm" onclick="setBgStyle('solid')">Solid Minimalis</button></div></div>
+</div>
+<div id="theme-panel-effects" style="display:none;flex-direction:column;gap:1.2rem">
+<div><div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><label style="font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600" class="">Efek Blur Glassmorphism Kartu:</label><span id="cardBlurDisplay" style="font-size:13px;color:var(--mu);font-family:var(--d)" class="">16px</span></div><input id="cardBlurSlider" max="30" min="0" oninput="updateCardBlur(this.value)" style="width:100%" type="range" value="16"></div>
+<div style="padding:1rem;border:1px solid var(--ln);border-radius:12px;background:rgba(255,255,255,.02)"><div style="font-weight:700;font-size:13.5px;color:#fff;margin-bottom:.3rem" class="">Sinkronisasi 3D Lembah Three.js</div><p style="font-size:13px;color:var(--mu);margin:0" class="">Setiap perubahan warna aksen dan background langsung memperbarui kabut kedalaman lembah, jaring wireframe, dan lampu telemetri drone 3D secara instan.</p></div>
+<div><button class="btn csv-btn btn-sm" onclick="copyCssVars()"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span class="">Salin Token CSS Variables</span></button></div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm" onclick="resetThemeToDefault()">Reset Bawaan</button>
+<div style="display:flex;gap:.5rem">
+<button class="btn btn-sm" onclick="closeThemeModal()">Tutup</button>
+<button class="btn go btn-sm" onclick="saveAndApplyTheme()">Simpan &amp; Terapkan</button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: UPLOAD DOKUMEN & FOTO (PDF / JPEG) -->
+<div aria-modal="true" class="modal-overlay" id="uploadModal" role="dialog">
+<div class="modal-box" style="max-width:680px">
+<div class="modal-header">
+<h3 class="">
+<svg fill="none" height="19" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="19"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+<span class="">Unggah Berkas PDF / Foto JPEG</span>
+</h3>
+<button class="btn btn-sm" onclick="closeUploadModal()" style="border-radius:50%;width:30px;height:30px;padding:0;justify-content:center">✕</button>
+</div>
+<div class="modal-body">
+<div class="dropzone" id="uploadDropzone" onclick="document.getElementById('docFileInput').click()">
+<svg fill="none" height="38" stroke="var(--ac2)" stroke-width="1.8" style="margin-bottom:.6rem;display:inline-block" viewBox="0 0 24 24" width="38"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" x2="12" y1="12" y2="18"></line><line x1="9" x2="15" y1="15" y2="15"></line></svg>
+<div style="font-family:var(--d);font-weight:700;font-size:15px;color:#fff;margin-bottom:.3rem" class="">Klik atau Tarik File PDF / JPEG ke sini</div>
+<div style="font-size:12.5px;color:var(--mu)" class="">Mendukung berkas format .PDF dokumen atau .JPG/.PNG resolusi tinggi</div>
+<input accept=".pdf,image/jpeg,image/png,image/webp" id="docFileInput" onchange="handleDocFileSelect(event)" style="display:none" type="file">
+</div>
+<div id="filePreviewBanner" style="display:none;background:rgba(41,151,255,.1);border:1px solid rgba(126,232,255,.3);border-radius:12px;padding:.8rem 1rem;align-items:center;gap:.8rem">
+<div id="filePreviewIcon" style="font-weight:700;font-family:var(--d);color:var(--ac2);font-size:13px" class="">PDF</div>
+<div style="flex:1;overflow:hidden">
+<div id="filePreviewName" style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" class="">nama_berkas.pdf</div>
+<div id="filePreviewSize" style="font-size:12px;color:var(--mu)" class="">1.2 MB</div>
+</div>
+</div>
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Judul Dokumen / Foto:</label>
+<input class="form-input" id="docInputTitle" placeholder="Misal: Sertifikat Pilot Drone APDI / Laporan Piezometer" type="text">
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Kategori Berkas:</label>
+<select class="form-select" id="docInputCategory">
+<option value="Sertifikasi &amp; Lisensi">Sertifikasi &amp; Lisensi</option>
+<option value="Laporan Geoteknik">Laporan Geoteknik &amp; Bendungan</option>
+<option value="Pemetaan Udara &amp; Drone">Pemetaan Udara &amp; Drone</option>
+<option value="Dokumentasi Lapangan">Dokumentasi Lapangan</option>
+</select>
+</div>
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Tahun / Periode:</label>
+<input class="form-input" id="docInputDate" placeholder="Misal: 2024 / 2023" type="text">
+</div>
+</div>
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);font-weight:600;margin-bottom:.4rem" class="">Deskripsi Singkat Dokumen:</label>
+<textarea class="form-textarea" id="docInputDesc" placeholder="Keterangan singkat tentang instansi penerbit, nomor registrasi, atau isi dokumen..." rows="3"></textarea>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm" onclick="closeUploadModal()">Batal</button>
+<button class="btn go btn-sm" onclick="saveNewDocument()">Terbitkan ke Dokumen</button>
+</div>
+</div>
+</div>
+<!-- MODAL: LIGHTBOX / VIEWER DOKUMEN & FOTO -->
+<div aria-modal="true" class="modal-overlay" id="viewerModal" role="dialog">
+<div class="modal-box" style="max-width:980px;height:90vh">
+<div class="modal-header">
+<h3 id="viewerTitle" class="">
+<span class="doc-badge-type doc-badge-pdf" id="viewerTypeBadge" style="position:static">PDF</span>
+<span id="viewerHeadingText" class="">Pratinjau Berkas</span>
+</h3>
+<div style="display:flex;align-items:center;gap:.6rem">
+<a class="btn btn-sm" download="dokumen" href="#" id="viewerDownloadBtn" target="_blank" title="Unduh Berkas">
+<svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+Unduh
+</a>
+<button class="btn btn-sm" onclick="closeViewerModal()" style="border-radius:50%;width:30px;height:30px;padding:0;justify-content:center">✕</button>
+</div>
+</div>
+<div class="modal-body" style="padding:0;flex:1;background:#03060b;display:flex;align-items:center;justify-content:center;overflow:hidden">
+<!-- Image Viewer -->
+<div id="viewerImgContainer" style="width:100%;height:100%;display:none;align-items:center;justify-content:center;overflow:auto;padding:1.5rem">
+<img alt="Detail Gambar" id="viewerImg" src="" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 0 40px rgba(0,0,0,.8)">
+</div>
+<!-- PDF Virtual Paper / Embed Viewer -->
+<div id="viewerPdfContainer" style="width:100%;height:100%;display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center">
+<div style="width:100%;max-width:640px;background:#0d1829;border:1px solid rgba(126,232,255,.3);border-radius:18px;padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.2rem;box-shadow:0 15px 50px rgba(0,0,0,.6)">
+<div style="width:68px;height:68px;border-radius:20px;background:rgba(255,75,75,.15);border:2px solid #ff4b4b;display:grid;place-items:center;color:#ff4b4b;font:700 24px var(--d)" class="">PDF</div>
+<div>
+<h3 id="pdfViewerTitle" style="font-size:1.35rem;margin:0 0 .5rem;color:#fff" class="">Nama Dokumen Resmi</h3>
+<p id="pdfViewerDesc" style="color:var(--mu);font-size:14px;max-width:480px;margin:0 auto" class="">Dokumen terverifikasi resmi dalam format PDF standar konstruksi &amp; penerbangan.</p>
+</div>
+<div id="pdfViewerMeta" style="font-size:13px;color:var(--ac2);font-family:var(--d);background:rgba(126,232,255,.08);padding:.4rem 1rem;border-radius:999px" class="">Ukuran: 2.4 MB • Status: Terverifikasi Digital</div>
+<div style="display:flex;gap:.8rem;margin-top:.8rem">
+<a class="btn go" download="" href="#" id="pdfDirectDownload" target="_blank">
+<svg fill="none" height="15" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+Unduh Berkas PDF Lengkap
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: CSV EDITOR -->
+<div aria-modal="true" class="modal-overlay" id="csvModalOverlay" role="dialog">
+<div class="modal-box">
+<div class="modal-header">
+<h3 class="">
+<svg fill="none" height="19" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="19"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+<span class="">Mode CSV: Editor Data Terstruktur</span>
+</h3>
+<button class="btn btn-sm" onclick="closeCsvModal()" style="border-radius:50%;width:30px;height:30px;padding:0;justify-content:center">✕</button>
+</div>
+<div class="modal-body">
+<div class="csv-tabs">
+<button class="csv-tab-btn active" id="tab-experience" onclick="switchCsvTab('experience')">Pengalaman Kerja</button>
+<button class="csv-tab-btn" id="tab-competencies" onclick="switchCsvTab('competencies')">Kompetensi Utama</button>
+<button class="csv-tab-btn" id="tab-skills" onclick="switchCsvTab('skills')">Keahlian &amp; Tags</button>
+</div>
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);margin-bottom:.4rem;font-weight:600" class="">Editor Nilai CSV:</label>
+<textarea class="csv-textarea" id="csvEditor" spellcheck="false"></textarea>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+<label style="font-size:13px;color:var(--mu);font-family:var(--d);font-weight:600" class="">Pratinjau Tabel Live:</label>
+<span id="csvRowCount" style="font-size:12px;color:var(--mu)" class="">0 baris</span>
+</div>
+<div style="max-height:170px;overflow-y:auto;border-radius:10px">
+<table class="csv-table-preview">
+<thead id="csvPreviewThead"></thead>
+<tbody id="csvPreviewTbody"></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<div style="display:flex;gap:.5rem">
+<button class="btn btn-sm" onclick="downloadCsvFile()">Unduh .CSV</button>
+<label class="btn btn-sm" style="margin:0;cursor:pointer">
+Unggah CSV
+<input accept=".csv,text/csv" id="csvFileInput" onchange="handleCsvFileUpload(event)" style="display:none" type="file">
+</label>
+</div>
+<div style="display:flex;gap:.5rem">
+<button class="btn btn-sm" onclick="closeCsvModal()">Batal</button>
+<button class="btn go btn-sm" onclick="applyCsvToCv()">Terapkan ke CV</button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: AVATAR CUSTOMIZER -->
+<div aria-modal="true" class="modal-overlay" id="avatarModal" role="dialog">
+<div class="modal-box" style="max-width:680px">
+<div class="modal-header">
+<h3 class="">
+<svg fill="none" height="19" stroke="var(--ac2)" stroke-width="2" viewBox="0 0 24 24" width="19"><circle cx="12" cy="8" r="4"></circle><path d="M20 21a8 8 0 1 0-16 0"></path></svg>
+<span class="">Kustomisasi Foto Profil &amp; Avatar</span>
+</h3>
+<button class="btn btn-sm" onclick="closeAvatarModal()" style="border-radius:50%;width:30px;height:30px;padding:0;justify-content:center">✕</button>
+</div>
+<div class="modal-body">
+<div>
+<label style="display:block;font-size:13px;color:var(--ac2);font-family:var(--d);margin-bottom:.4rem;font-weight:600" class="">Pilih Preset Tema:</label>
+<div class="avatar-preset-grid">
+<div class="avatar-preset-card active" onclick="selectPresetAvatar(this, 'Quadcopter Survey Drone', 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<img alt="Drone" class="avatar-preset-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-9d24gQxFiaOOLHNFL0bJXvSwrY1f0U2RUDcA1Kje4UM8TTwKXVk9IuADOh4OtqYHMoYmlQCw6iKHfyuXu9BxFOyQjsI34M1bbnUTtRl_WiyvlIcHyTLwNDoRMOihlcVMjSOBc0jh14F1-q6zOFBKHRshjf13t5ftOffrFZV9UMPNpVavCCEuLqlislUyY0r39DZm3Lidz-YYkosBVmyCNnXBLgfvlRbU8D0HMDo">
+<div style="font-size:11.5px;font-family:var(--d);font-weight:600" class="">Quadcopter Drone</div>
+</div>
+<div class="avatar-preset-card" onclick="selectPresetAvatar(this, 'Pilot Pemetaan Udara', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<img alt="Pilot" class="avatar-preset-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl1Rze6mLEo3jS-zRlRz-eToZxcqhW3LzNUj03xfS8mqNsZqLad5RDWKeeNAFdWprRcNp8D2lqpdshFkmxnZiS-gU9YbgtbGK_51jHhTI5aRT7o2iXT1Ya2ijpnrobOotUl6hj83asZWVnM1spFL6Cf5q0lhHCOKY1EB44ABztjEGa8tKHLWjmd8LKRXcGULj4Dg1gmvL8YXnbEjBBBvfyur9hV3JfTusSTZ7O-pI">
+<div style="font-size:11.5px;font-family:var(--d);font-weight:600" class="">Pilot Pemetaan</div>
+</div>
+<div class="avatar-preset-card" onclick="selectPresetAvatar(this, 'Geoteknik &amp; Bendungan', 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<img alt="Bendungan" class="avatar-preset-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK4xziDFSPxgFYwCMK6GRKGBCHYXtSbrjlLpEcrw5C1peF4dORPjxYtoeN-1oEHTGSU7p_lNFUm67JkGYPNCihBqoXv-Su7IwOC9Ha-pz4asdFZZN0gWDgEnE0YgqNS1ygYjIhqtbeiOrch6FwSp2xvNZ4u6AWwEEn0WgpOQBE9g2ACg7SaKBPqCH7UINH10kJt7NxmQ_a6MTQ-ZaK6dBvFPmL6OGfS76GQqXGJVQ">
+<div style="font-size:11.5px;font-family:var(--d);font-weight:600" class="">Geoteknik Bendungan</div>
+</div>
+<div class="avatar-preset-card" onclick="selectPresetAvatar(this, 'Admin Teknik &amp; Data', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<img alt="Admin Data" class="avatar-preset-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJZLoowAplP7-k88g4EpPRxXRwAXGw4xi7C40o_D4IpBCozSIgKJTz2U3gc6AIuc6Y811jWY4kIobQXvbj4CsxUfwixIWeSDNPCZRXDJzlPOHOkfrYuthazeKo98kKxqVXuVuTb4cvqeW9PVQO7QCuVu0j4n6ORt5e54LuD-suMmigva_OCmejbmyqKknPjeoT1psmC1CrLudhWDqySmKrIS10N777kMK0TQzetjQ">
+<div style="font-size:11.5px;font-family:var(--d);font-weight:600" class="">Admin Teknik</div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid var(--ln);padding-top:1rem;display:flex;gap:.8rem;align-items:center">
+<label class="btn btn-sm" style="margin:0;cursor:pointer">
+Unggah Foto
+<input accept="image/*" onchange="handleAvatarUpload(event)" style="display:none" type="file">
+</label>
+<input class="form-input" id="avatarUrlInput" oninput="handleAvatarUrlChange(this.value)" placeholder="Atau tautkan URL foto..." style="flex:1" type="url">
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-sm" onclick="resetAvatarToDefault()">Reset Default</button>
+<div style="display:flex;gap:.5rem">
+<button class="btn btn-sm" onclick="closeAvatarModal()">Batal</button>
+<button class="btn go btn-sm" onclick="saveCustomAvatar()">Terapkan</button>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* -------------------------------------------------------------
+   WEB AUDIO API: FUTURISTIC TELEMETRY SFX SYNTHESIZER
+   ------------------------------------------------------------- */
+var SFX = (function(){
+  var ctx = null, enabled = true, lastHover = 0;
+  function init(){
+    if(!ctx){
+      var Cls = window.AudioContext || window.webkitAudioContext;
+      if(Cls) ctx = new Cls();
+    }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+  }
+  function play(name){
+    if(!enabled) return;
+    try {
+      init();
+      if(!ctx) return;
+      var now = ctx.currentTime;
+      if(name === 'hover'){
+        var rn = Date.now();
+        if(rn - lastHover < 60) return;
+        lastHover = rn;
+        var osc = ctx.createOscillator(), g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1200, now);
+        osc.frequency.exponentialRampToValueAtTime(1900, now + 0.035);
+        g.gain.setValueAtTime(0.02, now);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(now); osc.stop(now + 0.045);
+      } else if(name === 'click'){
+        var o1 = ctx.createOscillator(), g1 = ctx.createGain();
+        o1.type = 'triangle';
+        o1.frequency.setValueAtTime(800, now);
+        o1.frequency.exponentialRampToValueAtTime(260, now + 0.06);
+        g1.gain.setValueAtTime(0.06, now);
+        g1.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+        o1.connect(g1); g1.connect(ctx.destination);
+        o1.start(now); o1.stop(now + 0.075);
+      } else if(name === 'openModal'){
+        [440, 700, 1100].forEach(function(f, i){
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.type = 'sine';
+          o.frequency.setValueAtTime(f, now + i*0.04);
+          g.gain.setValueAtTime(0.04, now + i*0.04);
+          g.gain.exponentialRampToValueAtTime(0.0001, now + i*0.04 + 0.12);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(now + i*0.04); o.stop(now + i*0.04 + 0.13);
+        });
+      } else if(name === 'toggle'){
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine';
+        o.frequency.setValueAtTime(540, now);
+        o.frequency.setValueAtTime(1050, now + 0.04);
+        g.gain.setValueAtTime(0.05, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+        o.connect(g); g.connect(ctx.destination);
+        o.start(now); o.stop(now + 0.11);
+      }
+    } catch(e){}
+  }
+  return {
+    init: init,
+    play: play,
+    setEnabled: function(v){ enabled = v; },
+    isEnabled: function(){ return enabled; }
+  };
+})();
+
+['pointerdown','scroll','keydown'].forEach(function(e){
+  window.addEventListener(e, function(){ SFX.init(); }, { once: true, passive: true });
+});
+
+var sfxToggleBtn = document.getElementById('sfxToggleBtn');
+var sfxLabel = document.getElementById('sfxLabel');
+var sfxIconOn = document.getElementById('sfxIconOn');
+var sfxIconOff = document.getElementById('sfxIconOff');
+
+sfxToggleBtn.addEventListener('click', function(){
+  SFX.init();
+  var state = !SFX.isEnabled();
+  SFX.setEnabled(state);
+  sfxToggleBtn.classList.toggle('muted', !state);
+  sfxLabel.textContent = state ? 'SFX: ON' : 'SFX: OFF';
+  sfxIconOn.style.display = state ? 'block' : 'none';
+  sfxIconOff.style.display = state ? 'none' : 'block';
+  if(state) SFX.play('toggle');
+  showToast(state ? 'Efek suara aktif' : 'Efek suara dimatikan');
+});
+
+document.addEventListener('mouseover', function(e){
+  if(e.target.closest('button, .btn, a, .card, .doc-card, .doc-filter-btn, .tags span')){
+    SFX.play('hover');
+  }
+});
+document.addEventListener('click', function(e){
+  var el = e.target.closest('button, .btn, a, .doc-filter-btn');
+  if(el && el.id !== 'sfxToggleBtn') SFX.play('click');
+});
+
+/* -------------------------------------------------------------
+   DATA STORE: CV & DOKUMEN SISTEM (PDF & JPEG)
+   ------------------------------------------------------------- */
+var CV_DATA = {
+  experience: [
+    {
+      period: "2022 – Sekarang",
+      role: "Koordinator Pemeliharaan & Pilot Drone UPB",
+      company: "BBWSCC — Kementerian Pekerjaan Umum",
+      tasks: "Mengelola administrasi dan rekapitulasi data instrumentasi bendungan untuk laporan evaluasi berkala.|Menyusun dan mengarsipkan laporan pemetaan serta inspeksi visual untuk keputusan tim engineer.|Mengoordinasikan pemeliharaan rutin dan darurat antara tim teknis, kontraktor, dan instansi terkait.|Mengoperasikan drone photogrammetry untuk pemetaan udara dan dokumentasi kondisi bendungan."
+    },
+    {
+      period: "2017 – 2022",
+      role: "Admin Teknik Proyek Pembangunan Bendungan Ciawi",
+      company: "PT. SAC Nusantara",
+      tasks: "Mengelola dan mengarsipkan dokumen teknik serta data progres proyek bendungan skala nasional.|Opname tagihan dan verifikasi volume pekerjaan sebagai acuan pembayaran kontraktor.|Menyusun arsip foto teknis dan mendukung Laporan Progres Mingguan dan Bulanan."
+    },
+    {
+      period: "2016 – 2017",
+      role: "Marketing Communication & Administrasi Visual",
+      company: "Hotel The Forest, Bogor",
+      tasks: "Mengelola administrasi promosi, arsip media visual, dan hubungan dengan klien korporat serta travel agent."
+    },
+    {
+      period: "2013 – 2016",
+      role: "Operator Wahana, Fotografer & Pengelola Arsip Visual",
+      company: "Wahana Rekreasi Bogor · PT. Safari Wonder · Nunema Photography",
+      tasks: "Mencatat kelayakan peralatan dan mengawasi SOP keselamatan kerja (2014–2016).|Mengelola arsip foto, pengeditan digital, dan penyerahan hasil tepat jadwal (2013–2014)."
+    }
+  ],
+  competencies: [
+    {
+      code: "A",
+      title: "Administrasi teknik & proyek",
+      description: "Dokumen konstruksi, opname tagihan, pengarsipan terstruktur, laporan progres mingguan dan bulanan."
+    },
+    {
+      code: "D",
+      title: "Data & pelaporan",
+      description: "Pengolahan data piezometer, inclinometer, dan settlement gauge untuk evaluasi teknis."
+    },
+    {
+      code: "P",
+      title: "Pemetaan & dokumentasi visual",
+      description: "Pemetaan udara dengan drone memakai Agisoft Metashape dan Global Mapper."
+    },
+    {
+      code: "L",
+      title: "Lapangan & pemeliharaan",
+      description: "Monitoring infrastruktur, inspeksi visual, pengelasan, dan koordinasi lintas tim."
+    }
+  ],
+  skills: [
+    {
+      category: "Pemetaan & dokumentasi",
+      tags: "Agisoft Metashape,Global Mapper,Drone Pilot,Photoshop"
+    },
+    {
+      category: "Administrasi & data",
+      tags: "Excel (Advanced),Word,PowerPoint,Opname Tagihan,As-Built Drawing,Otomasi AI"
+    },
+    {
+      category: "Instrumentasi lapangan",
+      tags: "Piezometer,Inclinometer,Settlement Gauge,Telemetri RTU,Welding"
+    }
+  ]
+};
+
+/* Data Dokumen & Foto (PDF + JPEG) */
+var DOCS_DATA = [
+  {
+    id: "doc_1",
+    type: "pdf",
+    title: "Lisensi Pilot Drone APDI & Registrasi Kemenhub",
+    category: "Sertifikasi & Lisensi",
+    date: "2023 – 2026",
+    size: "1.8 MB",
+    thumb: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80",
+    url: "#",
+    desc: "Sertifikasi resmi pilot drone komersial APDI untuk operasi pemetaan udara fotogrametri dan inspeksi lereng bendungan."
+  },
+  {
+    id: "doc_2",
+    type: "pdf",
+    title: "Laporan Evaluasi Instrumentasi Piezometer & Rembesan",
+    category: "Laporan Geoteknik",
+    date: "Semester II 2024",
+    size: "4.5 MB",
+    thumb: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+    url: "#",
+    desc: "Rekapitulasi data geoteknik vibrating wire piezometer, rembesan vena weir, dan verifikasi batas aman tubuh bendungan BBWSCC."
+  },
+  {
+    id: "doc_3",
+    type: "jpg",
+    title: "Orthophoto 3D Topografi Spillway Bendungan Ciawi",
+    category: "Pemetaan Udara & Drone",
+    date: "November 2024",
+    size: "12.4 MB (HD)",
+    thumb: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1600&q=85",
+    desc: "Hasil mosaik fotogrametri 650 foto udara menggunakan Agisoft Metashape dengan Ground Sampling Distance (GSD) 2.1 cm/px."
+  },
+  {
+    id: "doc_4",
+    type: "jpg",
+    title: "Inspeksi Visual RTU Sensor Telemetri & Inclinometer",
+    category: "Dokumentasi Lapangan",
+    date: "Januari 2025",
+    size: "6.2 MB (HD)",
+    thumb: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1600&q=85",
+    desc: "Pemeriksaan berkala panel telemetri surya otomatis pada lereng kanan bendungan untuk transmisi data elevasi muka air."
+  },
+  {
+    id: "doc_5",
+    type: "pdf",
+    title: "Sertifikat Keselamatan Konstruksi & K3 Lapangan PU",
+    category: "Sertifikasi & Lisensi",
+    date: "2022",
+    size: "1.2 MB",
+    thumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    url: "#",
+    desc: "Kualifikasi standar keselamatan kerja konstruksi berat di lingkungan bendungan dan area lereng terjal."
+  }
+];
+
+var currentDocFilter = 'all';
+
+/* -------------------------------------------------------------
+   RENDER SECTIONS & SYSTEM DOKUMEN
+   ------------------------------------------------------------- */
+function renderAllSections(){
+  renderExperience();
+  renderCompetencies();
+  renderSkills();
+  renderDocuments();
+  initTiltCards();
+}
+
+function renderExperience(){
+  var c = document.getElementById('experienceContainer');
+  if(!c) return;
+  var isEdit = document.body.classList.contains('edit-mode-active');
+  c.innerHTML = CV_DATA.experience.map(function(item, idx){
+    var tasks = item.tasks.split('|').map(function(t, tIdx){
+      return '<li contenteditable="' + isEdit + '" onblur="updateTaskText(' + idx + ',' + tIdx + ',this.innerText)">' + t + '</li>';
+    }).join('');
+    return '<div class="card tilt job">' +
+      '<div class="d" contenteditable="' + isEdit + '" onblur="updateExpField(' + idx + ',\'period\',this.innerText)">' + item.period + '</div>' +
+      '<div>' +
+        '<h3 contenteditable="' + isEdit + '" onblur="updateExpField(' + idx + ',\'role\',this.innerText)">' + item.role + '</h3>' +
+        '<p class="o" contenteditable="' + isEdit + '" onblur="updateExpField(' + idx + ',\'company\',this.innerText)">' + item.company + '</p>' +
+        '<ul>' + tasks + '</ul>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderCompetencies(){
+  var c = document.getElementById('competenciesContainer');
+  if(!c) return;
+  var isEdit = document.body.classList.contains('edit-mode-active');
+  c.innerHTML = CV_DATA.competencies.map(function(item, idx){
+    return '<div class="card tilt">' +
+      '<div class="ico" contenteditable="' + isEdit + '" onblur="updateCompField(' + idx + ',\'code\',this.innerText)">' + item.code + '</div>' +
+      '<h3 contenteditable="' + isEdit + '" onblur="updateCompField(' + idx + ',\'title\',this.innerText)">' + item.title + '</h3>' +
+      '<p contenteditable="' + isEdit + '" onblur="updateCompField(' + idx + ',\'description\',this.innerText)">' + item.description + '</p>' +
+    '</div>';
+  }).join('');
+}
+
+function renderSkills(){
+  var c = document.getElementById('skillsContainer');
+  if(!c) return;
+  var isEdit = document.body.classList.contains('edit-mode-active');
+  c.innerHTML = CV_DATA.skills.map(function(item, idx){
+    var tags = item.tags.split(',').map(function(tag, tagIdx){
+      return '<span contenteditable="' + isEdit + '" onblur="updateSkillTag(' + idx + ',' + tagIdx + ',this.innerText)">' + tag.trim() + '</span>';
+    }).join('');
+    return '<div class="card tilt">' +
+      '<h3 contenteditable="' + isEdit + '" onblur="updateSkillField(' + idx + ',\'category\',this.innerText)">' + item.category + '</h3>' +
+      '<div class="tags">' + tags + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderDocuments(){
+  var container = document.getElementById('documentsGrid');
+  if(!container) return;
+
+  var filtered = DOCS_DATA.filter(function(d){
+    if(currentDocFilter === 'all') return true;
+    return d.type === currentDocFilter;
+  });
+
+  // Update counts
+  var countAll = DOCS_DATA.length;
+  var countPdf = DOCS_DATA.filter(function(d){ return d.type === 'pdf'; }).length;
+  var countJpg = DOCS_DATA.filter(function(d){ return d.type === 'jpg'; }).length;
+  document.getElementById('count-all').textContent = countAll;
+  document.getElementById('count-pdf').textContent = countPdf;
+  document.getElementById('count-jpg').textContent = countJpg;
+
+  if(filtered.length === 0){
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--mu)">Belum ada dokumen dalam kategori ini. Silakan unggah berkas baru.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(function(item){
+    var isPdf = item.type === 'pdf';
+    var badgeClass = isPdf ? 'doc-badge-pdf' : 'doc-badge-jpg';
+    var badgeText = isPdf ? 'DOKUMEN PDF' : 'FOTO HD (JPEG)';
+
+    return '<div class="doc-card tilt" data-doc-id="' + item.id + '">' +
+      '<div class="doc-thumb" onclick="openDocViewer(\'' + item.id + '\')">' +
+        '<img src="' + item.thumb + '" alt="' + item.title + '" loading="lazy" />' +
+        '<span class="doc-badge-type ' + badgeClass + '">' +
+          (isPdf ? '📄 ' : '📷 ') + badgeText +
+        '</span>' +
+      '</div>' +
+      '<div class="doc-body">' +
+        '<div class="doc-date">' + item.category + ' • ' + item.date + '</div>' +
+        '<h3 class="doc-title">' + item.title + '</h3>' +
+        '<p class="doc-desc">' + item.desc + '</p>' +
+        '<div class="doc-actions">' +
+          '<span class="doc-meta-size">' + item.size + '</span>' +
+          '<div style="display:flex;gap:.4rem">' +
+            '<button class="btn btn-sm" onclick="openDocViewer(\'' + item.id + '\')">Lihat</button>' +
+            '<button class="btn btn-sm" onclick="deleteDocument(\'' + item.id + '\')" style="color:#ff7878" title="Hapus Berkas">✕</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  initTiltCards();
+}
+
+function filterDocs(type, btn){
+  currentDocFilter = type;
+  document.querySelectorAll('.doc-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  if(btn) btn.classList.add('active');
+  SFX.play('click');
+  renderDocuments();
+}
+
+function deleteDocument(id){
+  if(confirm('Hapus berkas ini dari arsip?')){
+    DOCS_DATA = DOCS_DATA.filter(function(d){ return d.id !== id; });
+    renderDocuments();
+    SFX.play('toggle');
+    showToast('Berkas berhasil dihapus');
+  }
+}
+
+/* -------------------------------------------------------------
+   VIEWER / LIGHTBOX DOKUMEN (PDF & JPEG)
+   ------------------------------------------------------------- */
+function openDocViewer(id){
+  var item = DOCS_DATA.find(function(d){ return d.id === id; });
+  if(!item) return;
+  SFX.play('openModal');
+
+  var modal = document.getElementById('viewerModal');
+  var headingText = document.getElementById('viewerHeadingText');
+  var badge = document.getElementById('viewerTypeBadge');
+  var downloadBtn = document.getElementById('viewerDownloadBtn');
+  var imgContainer = document.getElementById('viewerImgContainer');
+  var pdfContainer = document.getElementById('viewerPdfContainer');
+  var viewerImg = document.getElementById('viewerImg');
+
+  headingText.textContent = item.title;
+  downloadBtn.href = item.url && item.url !== '#' ? item.url : (item.thumb || '#');
+  downloadBtn.download = item.title;
+
+  if(item.type === 'jpg'){
+    badge.className = 'doc-badge-type doc-badge-jpg';
+    badge.textContent = 'JPEG / FOTO HD';
+    imgContainer.style.display = 'flex';
+    pdfContainer.style.display = 'none';
+    viewerImg.src = item.url && item.url !== '#' ? item.url : item.thumb;
+  } else {
+    badge.className = 'doc-badge-type doc-badge-pdf';
+    badge.textContent = 'PDF DOKUMEN';
+    imgContainer.style.display = 'none';
+    pdfContainer.style.display = 'flex';
+    document.getElementById('pdfViewerTitle').textContent = item.title;
+    document.getElementById('pdfViewerDesc').textContent = item.desc;
+    document.getElementById('pdfViewerMeta').textContent = item.category + ' • Ukuran: ' + item.size;
+    document.getElementById('pdfDirectDownload').href = item.url && item.url !== '#' ? item.url : (item.thumb || '#');
+    document.getElementById('pdfDirectDownload').download = item.title + '.pdf';
+  }
+
+  modal.classList.add('active');
+}
+
+function closeViewerModal(){
+  SFX.play('toggle');
+  document.getElementById('viewerModal').classList.remove('active');
+}
+
+/* -------------------------------------------------------------
+   UPLOAD BERKAS PDF & JPEG
+   ------------------------------------------------------------- */
+var stagedUploadedFile = null;
+
+function openUploadModal(){
+  SFX.play('openModal');
+  stagedUploadedFile = null;
+  document.getElementById('filePreviewBanner').style.display = 'none';
+  document.getElementById('docInputTitle').value = '';
+  document.getElementById('docInputDate').value = new Date().getFullYear().toString();
+  document.getElementById('docInputDesc').value = '';
+  document.getElementById('uploadModal').classList.add('active');
+}
+
+function closeUploadModal(){
+  SFX.play('toggle');
+  document.getElementById('uploadModal').classList.remove('active');
+}
+
+function handleDocFileSelect(e){
+  var file = e.target.files && e.target.files[0];
+  if(!file) return;
+  processFileStaging(file);
+}
+
+function processFileStaging(file){
+  stagedUploadedFile = file;
+  var isPdf = file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf';
+  var banner = document.getElementById('filePreviewBanner');
+  var nameEl = document.getElementById('filePreviewName');
+  var sizeEl = document.getElementById('filePreviewSize');
+  var iconEl = document.getElementById('filePreviewIcon');
+
+  banner.style.display = 'flex';
+  nameEl.textContent = file.name;
+  sizeEl.textContent = (file.size / (1024*1024)).toFixed(2) + ' MB';
+  iconEl.textContent = isPdf ? 'PDF' : 'JPEG';
+  iconEl.style.color = isPdf ? '#ff4b4b' : 'var(--ac2)';
+
+  // Auto-fill title from filename
+  var titleInput = document.getElementById('docInputTitle');
+  if(!titleInput.value){
+    titleInput.value = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+  }
+
+  SFX.play('toggle');
+}
+
+// Drag & drop support
+var dropzone = document.getElementById('uploadDropzone');
+['dragenter','dragover'].forEach(function(evt){
+  dropzone.addEventListener(evt, function(e){
+    e.preventDefault();
+    dropzone.classList.add('dragover');
+  });
+});
+['dragleave','drop'].forEach(function(evt){
+  dropzone.addEventListener(evt, function(e){
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+  });
+});
+dropzone.addEventListener('drop', function(e){
+  if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
+    processFileStaging(e.dataTransfer.files[0]);
+  }
+});
+
+function saveNewDocument(){
+  var title = document.getElementById('docInputTitle').value.trim();
+  var category = document.getElementById('docInputCategory').value;
+  var date = document.getElementById('docInputDate').value.trim() || '2025';
+  var desc = document.getElementById('docInputDesc').value.trim();
+
+  if(!title){
+    alert('Mohon isi judul berkas dokumen.');
+    return;
+  }
+
+  var isPdf = true;
+  var thumbUrl = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80";
+  var sizeStr = "2.1 MB";
+
+  if(stagedUploadedFile){
+    isPdf = stagedUploadedFile.name.toLowerCase().endsWith('.pdf') || stagedUploadedFile.type === 'application/pdf';
+    sizeStr = (stagedUploadedFile.size / (1024*1024)).toFixed(1) + ' MB';
+    if(!isPdf){
+      thumbUrl = URL.createObjectURL(stagedUploadedFile);
+    } else {
+      thumbUrl = "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80";
+    }
+  }
+
+  var newDoc = {
+    id: "doc_" + Date.now(),
+    type: isPdf ? 'pdf' : 'jpg',
+    title: title,
+    category: category,
+    date: date,
+    size: sizeStr,
+    thumb: thumbUrl,
+    url: thumbUrl,
+    desc: desc || "Dokumen teknis terverifikasi untuk arsip operasional bendungan."
+  };
+
+  DOCS_DATA.unshift(newDoc);
+  renderDocuments();
+  closeUploadModal();
+  SFX.play('toggle');
+  showToast('Berkas ' + (isPdf ? 'PDF' : 'JPEG') + ' berhasil diterbitkan!');
+}
+
+/* -------------------------------------------------------------
+   EDIT MODE (INLINE EDITING)
+   ------------------------------------------------------------- */
+var isEditMode = false;
+var toggleEditBtn = document.getElementById('toggleEditBtn');
+var editText = document.getElementById('editText');
+
+toggleEditBtn.addEventListener('click', function(){
+  isEditMode = !isEditMode;
+  document.body.classList.toggle('edit-mode-active', isEditMode);
+  toggleEditBtn.classList.toggle('active', isEditMode);
+  editText.textContent = isEditMode ? 'Selesai Edit' : 'Mode Edit';
+  SFX.play('toggle');
+
+  document.querySelectorAll('[data-editable]').forEach(function(el){
+    el.setAttribute('contenteditable', isEditMode ? 'true' : 'false');
+  });
+
+  renderAllSections();
+  showToast(isEditMode ? 'Mode Edit Aktif: Klik pada teks untuk mengubah' : 'Perubahan tersimpan');
+});
+
+function updateExpField(idx, field, val){
+  if(CV_DATA.experience[idx]){
+    CV_DATA.experience[idx][field] = val.trim();
+    showToast('Pengalaman diperbarui');
+  }
+}
+function updateTaskText(idx, tIdx, val){
+  if(CV_DATA.experience[idx]){
+    var arr = CV_DATA.experience[idx].tasks.split('|');
+    arr[tIdx] = val.trim();
+    CV_DATA.experience[idx].tasks = arr.join('|');
+    showToast('Tugas pengalaman diperbarui');
+  }
+}
+function updateCompField(idx, field, val){
+  if(CV_DATA.competencies[idx]){
+    CV_DATA.competencies[idx][field] = val.trim();
+    showToast('Kompetensi diperbarui');
+  }
+}
+function updateSkillField(idx, field, val){
+  if(CV_DATA.skills[idx]){
+    CV_DATA.skills[idx][field] = val.trim();
+    showToast('Keahlian diperbarui');
+  }
+}
+function updateSkillTag(idx, tagIdx, val){
+  if(CV_DATA.skills[idx]){
+    var tags = CV_DATA.skills[idx].tags.split(',');
+    tags[tagIdx] = val.trim();
+    CV_DATA.skills[idx].tags = tags.join(',');
+    showToast('Tag keahlian diperbarui');
+  }
+}
+
+/* -------------------------------------------------------------
+   CSV MODAL & EXPORT / IMPORT
+   ------------------------------------------------------------- */
+var currentActiveCsvTab = 'experience';
+var csvModalOverlay = document.getElementById('csvModalOverlay');
+var csvEditor = document.getElementById('csvEditor');
+
+function openCsvModal(tab){
+  SFX.play('openModal');
+  currentActiveCsvTab = tab || 'experience';
+  document.querySelectorAll('.csv-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  var btn = document.getElementById('tab-' + currentActiveCsvTab);
+  if(btn) btn.classList.add('active');
+
+  csvEditor.value = dataToCsv(currentActiveCsvTab);
+  updateCsvPreview();
+  csvModalOverlay.classList.add('active');
+}
+function closeCsvModal(){
+  SFX.play('toggle');
+  csvModalOverlay.classList.remove('active');
+}
+function switchCsvTab(tab){
+  SFX.play('click');
+  currentActiveCsvTab = tab;
+  document.querySelectorAll('.csv-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  var btn = document.getElementById('tab-' + tab);
+  if(btn) btn.classList.add('active');
+  csvEditor.value = dataToCsv(tab);
+  updateCsvPreview();
+}
+
+function dataToCsv(tab){
+  if(tab === 'experience'){
+    var h = ['"period"','"role"','"company"','"tasks"'];
+    var r = CV_DATA.experience.map(function(e){
+      return ['"' + e.period + '"', '"' + e.role + '"', '"' + e.company + '"', '"' + e.tasks + '"'].join(',');
+    });
+    return [h.join(','), r.join('\n')].join('\n');
+  } else if(tab === 'competencies'){
+    var h = ['"code"','"title"','"description"'];
+    var r = CV_DATA.competencies.map(function(c){
+      return ['"' + c.code + '"', '"' + c.title + '"', '"' + c.description + '"'].join(',');
+    });
+    return [h.join(','), r.join('\n')].join('\n');
+  } else if(tab === 'skills'){
+    var h = ['"category"','"tags"'];
+    var r = CV_DATA.skills.map(function(s){
+      return ['"' + s.category + '"', '"' + s.tags + '"'].join(',');
+    });
+    return [h.join(','), r.join('\n')].join('\n');
+  }
+  return '';
+}
+
+function parseCsv(str){
+  var lines = str.trim().split(/\r\n|\n/);
+  var out = [];
+  for(var i=0; i<lines.length; i++){
+    if(!lines[i].trim()) continue;
+    var row = lines[i].split(',').map(function(col){ return col.replace(/^"|"$/g, '').trim(); });
+    out.push(row);
+  }
+  return out;
+}
+
+function updateCsvPreview(){
+  var rows = parseCsv(csvEditor.value);
+  var thead = document.getElementById('csvPreviewThead');
+  var tbody = document.getElementById('csvPreviewTbody');
+  thead.innerHTML = ''; tbody.innerHTML = '';
+  if(rows.length === 0){
+    document.getElementById('csvRowCount').textContent = '0 baris';
+    return;
+  }
+  document.getElementById('csvRowCount').textContent = (rows.length - 1) + ' baris data';
+  var trH = document.createElement('tr');
+  rows[0].forEach(function(h){ var th = document.createElement('th'); th.textContent = h; trH.appendChild(th); });
+  thead.appendChild(trH);
+  for(var i=1; i<rows.length; i++){
+    var tr = document.createElement('tr');
+    rows[i].forEach(function(c){ var td = document.createElement('td'); td.textContent = c; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  }
+}
+csvEditor.addEventListener('input', updateCsvPreview);
+
+function applyCsvToCv(){
+  var rows = parseCsv(csvEditor.value);
+  if(rows.length < 2){
+    alert('Data CSV tidak cukup baris.');
+    return;
+  }
+  if(currentActiveCsvTab === 'experience'){
+    CV_DATA.experience = rows.slice(1).map(function(r){
+      return { period: r[0]||'', role: r[1]||'', company: r[2]||'', tasks: r[3]||'' };
+    });
+  } else if(currentActiveCsvTab === 'competencies'){
+    CV_DATA.competencies = rows.slice(1).map(function(r){
+      return { code: r[0]||'', title: r[1]||'', description: r[2]||'' };
+    });
+  } else if(currentActiveCsvTab === 'skills'){
+    CV_DATA.skills = rows.slice(1).map(function(r){
+      return { category: r[0]||'', tags: r[1]||'' };
+    });
+  }
+  renderAllSections();
+  closeCsvModal();
+  SFX.play('toggle');
+  showToast('Data CSV berhasil diterapkan!');
+}
+
+function downloadCsvFile(){
+  var blob = new Blob([csvEditor.value], {type:'text/csv;charset=utf-8;'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'ibnu_mubarok_' + currentActiveCsvTab + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function handleCsvFileUpload(e){
+  var f = e.target.files[0];
+  if(!f) return;
+  var r = new FileReader();
+  r.onload = function(evt){
+    csvEditor.value = evt.target.result;
+    updateCsvPreview();
+    SFX.play('toggle');
+  };
+  r.readAsText(f);
+}
+
+/* -------------------------------------------------------------
+   AVATAR SYSTEM
+   ------------------------------------------------------------- */
+var curAvatarUrl = 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=200&q=80';
+var curAvatarTitle = 'Quadcopter Survey Drone';
+
+function openAvatarModal(){
+  SFX.play('openModal');
+  document.getElementById('avatarModal').classList.add('active');
+}
+function closeAvatarModal(){
+  SFX.play('toggle');
+  document.getElementById('avatarModal').classList.remove('active');
+}
+function selectPresetAvatar(el, title, url){
+  SFX.play('click');
+  document.querySelectorAll('.avatar-preset-card').forEach(function(c){ c.classList.remove('active'); });
+  if(el) el.classList.add('active');
+  curAvatarUrl = url;
+  curAvatarTitle = title;
+}
+function handleAvatarUpload(e){
+  var f = e.target.files && e.target.files[0];
+  if(!f) return;
+  var r = new FileReader();
+  r.onload = function(evt){
+    curAvatarUrl = evt.target.result;
+    curAvatarTitle = 'Foto Unggahan: ' + f.name;
+    document.querySelectorAll('.avatar-preset-card').forEach(function(c){ c.classList.remove('active'); });
+    SFX.play('toggle');
+  };
+  r.readAsDataURL(f);
+}
+function handleAvatarUrlChange(val){
+  if(!val.trim()) return;
+  curAvatarUrl = val.trim();
+  curAvatarTitle = 'Foto URL Kustom';
+}
+function saveCustomAvatar(){
+  document.getElementById('currentAvatarImg').src = curAvatarUrl;
+  document.getElementById('currentAvatarLabel').textContent = curAvatarTitle;
+  closeAvatarModal();
+  SFX.play('toggle');
+  showToast('Avatar profil diperbarui!');
+}
+function resetAvatarToDefault(){
+  curAvatarUrl = 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=200&q=80';
+  curAvatarTitle = 'Quadcopter Survey Drone';
+  document.getElementById('currentAvatarImg').src = curAvatarUrl;
+  document.getElementById('currentAvatarLabel').textContent = curAvatarTitle;
+  closeAvatarModal();
+  SFX.play('toggle');
+  showToast('Avatar direset ke bawaan');
+}
+
+/* -------------------------------------------------------------
+   TILT CARD & TOAST HELPER
+   ------------------------------------------------------------- */
+function initTiltCards(){
+  if(matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.tilt').forEach(function(c){
+      c.onpointermove = function(e){
+        var r = c.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - .5;
+        var y = (e.clientY - r.top)/r.height - .5;
+        c.style.transform = 'perspective(900px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateZ(6px)';
+      };
+      c.onpointerleave = function(){ c.style.transform = ''; };
+    });
+  }
+}
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+/* -------------------------------------------------------------
+   THREE.JS 3D TERRAIN & SCROLL ANIMATION
+   ------------------------------------------------------------- */
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion:reduce)').matches, pg = 0, tp = 0, mx = 0, my = 0;
+  var pc = document.getElementById('pc'), root = document.documentElement;
+
+  function sc(){
+    var m = root.scrollHeight - innerHeight;
+    tp = m > 0 ? Math.min(1, Math.max(0, scrollY / m)) : 0;
+  }
+  addEventListener('scroll', sc, { passive: true }); sc();
+  addEventListener('pointermove', function(e){
+    mx = e.clientX / innerWidth - .5;
+    my = e.clientY / innerHeight - .5;
+  }, { passive: true });
+
+  if(typeof THREE === 'undefined') return;
+  var cv = document.getElementById('gl'), R;
+  try { R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true }); } catch(e){ return; }
+
+  var mob = innerWidth < 700;
+  R.setPixelRatio(Math.min(devicePixelRatio || 1, mob ? 1.5 : 2));
+  R.setClearColor(0x000000, 0);
+
+  var S = new THREE.Scene();
+  S.fog = new THREE.FogExp2(0x05070b, .011);
+  var C = new THREE.PerspectiveCamera(58, 1, .1, 500);
+
+  var W = 150, N = mob ? 80 : 120;
+  function H(x, z){
+    var v = Math.abs(x), b = Math.min(v * v * .045, 30);
+    var n = Math.sin(x * .21) * Math.cos(z * .17) * 1.7 + Math.sin(x * .07 + z * .11) * 2.6;
+    var s = z < 0 ? -3.5 : -3.5 + z * .1;
+    return b + n + s;
+  }
+
+  var g = new THREE.PlaneGeometry(W, W, N, N);
+  g.rotateX(-Math.PI / 2);
+  var p = g.attributes.position, col = new Float32Array(p.count * 3), c = new THREE.Color(), st = [[0x0a3a8a], [0x2997ff], [0x7ee8ff], [0xffffff]];
+  for(var i=0; i<p.count; i++){
+    var y = H(p.getX(i), p.getZ(i)); p.setY(i, y);
+    var t = Math.min(1, Math.max(0, (y + 4) / 32)) * 3, k = Math.min(2, Math.floor(t));
+    c.setHex(st[k][0]).lerp(new THREE.Color(st[k + 1][0]), t - k);
+    col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+  }
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  S.add(new THREE.Points(g, new THREE.PointsMaterial({ size: mob ? .45 : .34, vertexColors: true, transparent: true, opacity: .95 })));
+  S.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0x2997ff, wireframe: true, transparent: true, opacity: .055 })));
+
+  /* Dam body */
+  var dam = new THREE.Mesh(new THREE.BoxGeometry(34, 13, 3.2), new THREE.MeshBasicMaterial({ color: 0x07111f, transparent: true, opacity: .85 }));
+  dam.position.set(0, 5.5, 0); S.add(dam);
+  var de = new THREE.LineSegments(new THREE.EdgesGeometry(dam.geometry), new THREE.LineBasicMaterial({ color: 0x7ee8ff })); de.position.copy(dam.position); S.add(de);
+
+  /* Reservoir water */
+  var wt = new THREE.Mesh(new THREE.PlaneGeometry(W, 75), new THREE.MeshBasicMaterial({ color: 0x2997ff, transparent: true, opacity: .14, depthWrite: false, side: THREE.DoubleSide }));
+  wt.rotation.x = -Math.PI / 2; wt.position.set(0, 10.5, -38); S.add(wt);
+
+  /* Drone Model */
+  var D = new THREE.Group(), bm = new THREE.MeshBasicMaterial({ color: 0xeef3fa }), rot = [];
+  D.add(new THREE.Mesh(new THREE.BoxGeometry(1.3, .35, 1.3), bm));
+  [[1, 1], [-1, 1], [1, -1], [-1, -1]].forEach(function(q){
+    var a = new THREE.Mesh(new THREE.BoxGeometry(1.5, .1, .14), bm);
+    a.position.set(q[0] * .7, 0, q[1] * .7);
+    a.rotation.y = Math.atan2(-q[1], q[0]);
+    D.add(a);
+    var r = new THREE.Mesh(new THREE.CylinderGeometry(.62, .62, .03, 16), new THREE.MeshBasicMaterial({ color: 0x7ee8ff, transparent: true, opacity: .5 }));
+    r.position.set(q[0] * 1.35, .14, q[1] * 1.35);
+    D.add(r); rot.push(r);
+  });
+  var cone = new THREE.Mesh(new THREE.ConeGeometry(3.4, 10, 24, 1, true), new THREE.MeshBasicMaterial({ color: 0x7ee8ff, transparent: true, opacity: .08, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
+  cone.position.y = -5.2; D.add(cone); D.scale.setScalar(1.4); S.add(D);
+
+  var V = function(x, y, z){ return new THREE.Vector3(x, y, z); };
+  var cp = new THREE.CatmullRomCurve3([V(0, 30, 78), V(46, 24, 44), V(12, 17, 24), V(-34, 19, -6), V(-10, 30, -40), V(0, 46, -6)]);
+  var lp = new THREE.CatmullRomCurve3([V(0, 8, 0), V(0, 8, 2), V(0, 9, -4), V(0, 7, 8), V(0, 2, -6), V(0, 4, 8)]);
+  var dp = new THREE.CatmullRomCurve3([V(8, 20, 40), V(20, 20, 26), V(4, 19, 10), V(-14, 21, -12), V(-2, 23, -22), V(10, 24, 14)]);
+  var a = new THREE.Vector3(), b = new THREE.Vector3();
+
+  function size(){
+    var w = innerWidth, h = innerHeight;
+    R.setSize(w, h, false);
+    C.aspect = w / h;
+    C.updateProjectionMatrix();
+  }
+  addEventListener('resize', size); size();
+
+  var t0 = performance.now();
+  function frame(now){
+    var t = (now - t0) / 1000;
+    pg += (tp - pg) * (RM ? 1 : .06);
+    cp.getPoint(pg, a); C.position.set(a.x + mx * 6, a.y - my * 4 + Math.sin(t * .4) * .35, a.z);
+    lp.getPoint(pg, b); C.lookAt(b);
+    dp.getPoint(Math.min(.999, pg + .04), a); D.position.set(a.x, a.y + Math.sin(t * 1.6) * .3, a.z);
+    D.rotation.z = Math.sin(t * 1.1) * .05;
+    if(!RM) rot.forEach(function(r, i){ r.rotation.y = t * 35 * (i % 2 ? 1 : -1); });
+    pc.textContent = 'Pemindaian ' + Math.round(pg * 100) + '%';
+    root.style.setProperty('--pg', pg.toFixed(3));
+    R.render(S, C);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* Initial boot */
+renderAllSections();
+</script>
+
+
+</body></html>

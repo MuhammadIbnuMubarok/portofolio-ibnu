@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Ibnu Mubarok icon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#081a2d"/>
+      <stop offset="100%" stop-color="#05070b"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9ce8ff"/>
+      <stop offset="100%" stop-color="#2997ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <g fill="none" stroke="url(#cyan)" stroke-width="4" stroke-linecap="round" opacity="0.9">
+    <path d="M28 196L68 60L108 196M56 146H90"/>
+    <path d="M132 196V60M132 60L172 118M172 118L212 60M212 60V196"/>
+    <path d="M42 96H214" opacity="0.5"/>
+    <path d="M42 160H214" opacity="0.5"/>
+  </g>
+  <circle cx="128" cy="128" r="72" stroke="url(#cyan)" stroke-width="3" opacity="0.45" fill="none"/>
+  <circle cx="128" cy="128" r="8" fill="#9ce8ff"/>
+</svg>
